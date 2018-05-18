@@ -1,3 +1,4 @@
+#!venv/bin/python
 import os, sys
 
 project_name = sys.argv[1]
@@ -41,7 +42,7 @@ f.close()
 print('Added include and app url in project urls...')
 
 # populate installed apps
-f = open(os.path.join(base_dir, project_name, 'settings.py'), 'r')
+f = open(os.path.join(base_dir, project_name, 'settings', 'base.py'), 'r')
 contents = f.readlines()
 f.close()
 
@@ -56,7 +57,7 @@ while result != "]\n":
 contents.insert(installed_apps_index, "    \n")
 contents.insert(installed_apps_index + 1, value)
 
-f = open(os.path.join(base_dir, project_name, 'settings.py'), 'w')
+f = open(os.path.join(base_dir, project_name, 'settings', 'base.py'), 'w')
 f.writelines(contents)
 f.close()
 print('Added {} app in INSTALLED_APPS'.format(app_name))
